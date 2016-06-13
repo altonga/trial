@@ -46,6 +46,8 @@ There were lot of issues in reading ragged files using read_csv. Have tried 2 wo
 
 This code was experimental and as such has hardcoded input.
 
+## Running the program
+
 `python pandasFreqItems.py`
 
 ---
@@ -55,10 +57,20 @@ This code was experimental and as such has hardcoded input.
 The third approach that I tried uses FP Growth algorithm that avoids inefficiencies of Apriori by not 
 generating all candidates. The algorithm can be found at [here](https://www.cs.sfu.ca/~jpei/publications/sigmod00.pdf).
 
-I used the Spark MLLib implementation of the same. Set the $SPARK_HOME to your Spark installation path.
+Instead of re-inveting the wheel, I used the Spark MLLib implementation of the same. 
 
+## Running the program
+
+Set the $SPARK_HOME to your Spark installation path.
 
 `run.sh -i <inputfile> -o <outputfile> -s <sigma>`
+
+Running this on the `retail_25k_c.dat` with sigma = 4 produced the `output_retail_25k.dat`.
+
+The `retail_25k_c.dat` is a copy of `retail_25k_dat` with trailing spaces removed using `sed 's/[ \t]*$//' retail_25k.dat > retail_25k_c.dat`.
+This was just a safety check in case I didn't include `strip()` in code.
+
+
 
 
  
